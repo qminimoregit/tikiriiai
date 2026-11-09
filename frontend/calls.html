@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calls · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>Calls</h1>
+      <p class="subtitle">Every conversation with its recording and transcript. Click a call to read it.</p>
+    </div>
+    <select id="channel" style="width:auto">
+      <option value="">All channels</option>
+      <option value="pbx">Phone</option>
+      <option value="browser_admin">Test calls</option>
+    </select>
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>When</th><th>Channel</th><th>Caller</th><th>Length</th><th>Language</th><th>Status</th><th>Ended</th><th>Details sent</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="hint" id="page-info"></span>
+      <button type="button" class="small" id="prev">← Newer</button>
+      <button type="button" class="small" id="next">Older →</button>
+    </div>
+  </div>
+</main>
+<script src="js/api.js"></script>
+<script>
+  let page = 1;
+  const END_LABELS = {
+    completed: "Finished", caller_goodbye: "Caller said goodbye", details_sent: "Details sent", out_of_scope: "Out of scope", hung_up_in_menu: "Hung up in the menu",
+    caller_hung_up: "Caller hung up", no_response: "No response", time_limit: "Time limit", error: "Error", server_restart: "Server restarted",
+  };
+
+  async function load() {
+    await appReady;
+    const channel = document.getElementById("channel").value;
+    const data = await api(`/api/calls?page=${page}${channel ? `&channel=${channel}` : ""}`);
+    clear(document.getElementById("rows"), data.items.length
+      ? data.items.map((c) =>
+          el("tr", { class: "row-click", onclick: () => (location.href = `call.html?id=${c.id}`) },
+            el("td", {}, fmtDT(c.started_at)),
+            el("td", {}, CHANNEL_LABELS[c.channel] || c.channel),
+            el("td", {}, c.caller_number || "—"),
+            el("td", {}, fmtDuration(c.duration_seconds)),
+            el("td", {}, LANG_LABELS[c.language] || "—"),
+            el("td", {}, badge(c.status)),
+            el("td", {}, END_LABELS[c.end_reason] || c.end_reason || "—"),
+            el("td", {}, c.messages_sent ? badge(`${c.messages_sent} sent`, "new") : "—")))
+      : el("tr", {}, el("td", { colspan: 8, class: "empty" }, "No calls yet. Try the Test call page.")));
+    const pages = Math.max(1, Math.ceil(data.total / data.page_size));
+    document.getElementById("page-info").textContent = `${data.total} call${data.total === 1 ? "" : "s"} · page ${page} of ${pages}`;
+    document.getElementById("prev").disabled = page <= 1;
+    document.getElementById("next").disabled = page >= pages;
+  }
+
+  document.getElementById("channel").addEventListener("change", () => { page = 1; load().catch((e) => toast(e.message, true)); });
+  document.getElementById("prev").addEventListener("click", () => { page--; load().catch((e) => toast(e.message, true)); });
+  document.getElementById("next").addEventListener("click", () => { page++; load().catch((e) => toast(e.message, true)); });
+  load().catch((e) => toast(e.message, true));
+</script>
+</body>
+</html>

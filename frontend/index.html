@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>Dashboard</h1>
+      <p class="subtitle" id="subtitle">The TIKIRII product line at a glance.</p>
+    </div>
+    <a class="btn" href="test-call.html">Make a test call</a>
+  </div>
+
+  <div class="warn-box" id="key-warning" hidden>GEMINI_API_KEY is not set in <code>.env</code>, so calls can't connect yet. The admin panel works.</div>
+
+  <div class="warn-box" id="messaging-warning" hidden></div>
+
+  <div class="grid grid-4">
+    <div class="card stat"><div class="label">New demo requests</div><div class="value" id="leads-new">–</div></div>
+    <div class="card stat"><div class="label">Demo requests, 7 days</div><div class="value" id="leads-7d">–</div></div>
+    <div class="card stat"><div class="label">Calls today</div><div class="value" id="calls-today">–</div></div>
+    <div class="card stat"><div class="label">Calls, last 7 days</div><div class="value" id="calls-7d">–</div></div>
+  </div>
+
+  <div class="card">
+    <div class="page-head"><h2>New demo requests</h2><a href="leads.html" class="hint">All demo requests →</a></div>
+    <div id="new-leads" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card">
+    <div class="page-head"><h2>Recent calls</h2><a href="calls.html" class="hint">All calls →</a></div>
+    <div class="table-wrap" style="margin-top:8px">
+      <table>
+        <thead><tr><th>When</th><th>Channel</th><th>Caller</th><th>Length</th><th>Status</th></tr></thead>
+        <tbody id="recent-calls"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Setup</h2>
+    <dl class="kv" id="setup" style="margin-top:14px"></dl>
+  </div>
+</main>
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

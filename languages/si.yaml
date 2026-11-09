@@ -1,0 +1,82 @@
+# Sinhala: everything the agent says in Sinhala. A call speaks only this language: the caller picked it in the language menu.
+#
+# Every language file has exactly the same keys. The app checks them at startup and refuses to start, naming the
+# file and the key, if one is missing or misspelt. Placeholders in {braces} are filled in by the app.
+#
+# Have a native speaker review this file: the agent speaks the way it is told to here.
+
+code: si
+name: Sinhala
+native_name: සිංහල
+transcription_codes: [si-LK, en-US]
+whatsapp_language: si_LK
+greeting: >-
+  ටිකිරි AI Agent වෙත ඇමතූ ඔබට ස්තුතියි.
+  ඔබගේ ආයතනයට එන Calls සමහර වෙලාවට Miss වෙනවද? ඒ නිසා Orders හෝ අලුත් Customers ලා මඟ හැරෙනවද?
+  නිවාඩු දවසටත් Calls එන නිසා, ඔබට නිදහසක් නැද්ද? එහෙමත් නැත්නම්, ආයතනය වහලා තියෙන වෙලාවට එන Calls Answer කරන්න කෙනෙක් නැද්ද?
+  දැන් ඒකට පහසු විසඳුමක් තියෙනවා.
+  Calls Answer කරන්න වෙනම සේවකයෙක් බඳවා ගන්න අවශ්‍ය නැහැ.
+  ටිකිරි AI Agent, අපිට පුළුවන් ඔබගේ ආයතනයට එන Calls Answer කරන්න, එකම වෙලාවේ Calls කිහිපයක් වුණත් Handle කරන්න පුළුවන්.
+  ඔබගේ සේවාවන් හෝ භාණ්ඩ ගැන පාරිභෝගිකයන්ට අවශ්‍ය විස්තර ලබා දෙන්නත්,
+  ඔබ වෙනුවෙන් Orders ලබා ගන්නත්,
+  Appointments සහ Reservations Book කරන්නත්, ටිකිරි AI Agent අපිට පුළුවන්.
+  ඒ කියන්නේ, ඔබ Busy වුණත්, නිවාඩු දවසක වුණත්, ආයතනය වහලා තිබුණත්, ඔබගේ Customersලාට අවශ්‍ය සහාය ලබා දෙන්න අපිට පුළුවන්.
+  මේ ගැන තව විස්තර දැනගන්න ඔබ කැමතිද?
+recording_notice: මෙම ඇමතුම ගුණාත්මකභාවය සඳහා පටිගත කරනවා.
+style_rules: |
+  - Speak natural, colloquial spoken Sinhala as a friendly Sri Lankan product specialist does, not formal written Sinhala: say අපේ (not අපගේ), ඔයා / ඔයාට / ඔයාගේ (not ඔබ / ඔබට / ඔබගේ), කියන්න (not පවසන්න / සදහන් කරන්න), තියෙනවා (not ඇත / තිබේ), පුළුවන් (not හැකිය), නෑ (not නොමැත).
+  - Keep sentences short and warm. Make requests as a friendly question, for example "ඔයාගේ නම කියන්න පුළුවන්ද?".
+  - Sinhala mixed with English words (Singlish) is Sinhala. Judge the language by the grammar words, not by English loanwords.
+  - Everyday English business words can stay in English: AI, call, booking, appointment, order, reminder, follow-up, demo, WhatsApp, Google Calendar, CRM, system, business, customer.
+  - Say times the spoken way, for example "හවස දෙකට", "හෙට උදේ" (never "2.00 PM"), and never read out web addresses letter by letter.
+  - Phone numbers in tool results are already written in spoken Sinhala words: say them exactly as written. Never turn digits into words yourself.
+hearing_hints: |
+  - The product name TIKIRII is said "ටිකිරි". Callers may say "ටිකිරි", "තිකිරි" or "ටිකී": they mean TIKIRII.
+  - Callers name business types in English or Sinhala: "සැලෝන් එක", "රෙස්ටුරන්ට් එක", "කඩේ", "ෂොප් එක", "හෝටලේ", "ක්ලිනික් එක", "චැනල් සෙන්ටර් එක" (healthcare), "ක්ලාස්", "ඉන්ස්ටිටියුට් එක" (education), "ලීසිං" (banking and finance), "ඉඩම්" (real estate), "ගරාජ් එක", "සර්විස් සෙන්ටර් එක" (vehicle service).
+  - "හරි", "ඔව්", "හා" and "ඔක්කේ" mean yes. "නෑ", "දැන් එපා" mean no.
+glossary: {AI voice agent: AI voice agent (දුරකථනයෙන් කතා කරන AI සහායකයා), incoming calls: එන ඇමතුම්, outgoing calls: යන ඇමතුම් (outgoing calls), appointment: appointment එකක් (වෙලාවක් වෙන් කරගැනීම), order: order එකක්, reminder: reminder එකක් (මතක් කිරීමක්), demo: demo එකක්, customer: customer (පාරිභෝගිකයා), business: business එක (ව්‍යාපාරය)}
+goodbye_phrases: [සුබ දවසක්, සුභ දවසක්, ගිහින් එන්නම්, බායි]
+join_word: සහ
+common: {ask_phone: 'ඔයාගේ ජංගම දුරකථන අංකය කියන්න පුළුවන්ද?', read_back_phone: 'ඔයා කියපු අංකය {phone}. හරිද?', phone_ten_digits: 'සමාවෙන්න, දුරකථන අංකයක ඉලක්කම් දහයක් තියෙන්න ඕනේ. බිංදුවෙන් පටන් අරන් සම්පූර්ණ අංකය හෙමින් කියන්න පුළුවන්ද?', ask_new_phone: ඔයා කැමති දුරකථන අංකය කියන්න., which_detail_wrong: 'සමාවෙන්න. වැරදි විස්තරය මොකක්ද?', please_repeat: 'සමාවෙන්න, මට හරියට ඇහුණේ නෑ. ආයෙත් කියන්න පුළුවන්ද?', sorry_wrong: 'සමාවෙන්න, මම වැරදි දෙයක් කිව්වා.', anything_else: 'TIKIRII ගැන තව මොනවා හරි දැනගන්න ඕනෙද?', no_information: 'සමාවෙන්න, ඒ ගැන තොරතුරු දැනට මගේ ළඟ නෑ. demo එකේදී අපේ කණ්ඩායමට ඒ ගැන කියන්න පුළුවන්.', out_of_scope: 'සමාවෙන්න, මට උදව් කරන්න පුළුවන් {company} ගැන ප්‍රශ්නවලට විතරයි.', other_language: 'සමාවෙන්න, මේ ඇමතුමේදී මට කතා කරන්න පුළුවන් සිංහලෙන් විතරයි. වෙනත් භාෂාවක් ඕනේ නම්, කොටු සලකුණ ඔබලා ප්‍රධාන මෙනුවට ගිහින් භාෂාව තෝරන්න.', still_there: 'ඔයා තාම ඉන්නවද?', no_response: ප්‍රතිචාරයක් නැති නිසා ඇමතුම අවසන් කරනවා. කතා කළාට ස්තූතියි. සුබ දවසක්!, wrap_up: ඇමතුමේ කාලය ඉවර වෙන්න ළඟයි. තව මොනවා හරි ඕනේ නම් දැන් කියන්න., goodbye: TIKIRII ට කතා කළාට ස්තූතියි. සුබ දවසක්!}
+send: {offer: 'TIKIRII ගැන කෙටි විස්තරයක් ඔයාගේ දුරකථනයට පණිවිඩයක් විදිහට එවන්නද?', ask_mobile: 'එවන්න ඕනේ ජංගම දුරකථන අංකය කියන්න පුළුවන්ද?', use_caller_id: 'ඔයා කතා කරන {phone} අංකයටම එවන්නද?', not_mobile: 'සමාවෙන්න, ඒක ජංගම දුරකථන අංකයක් නෙවෙයි. ජංගම අංකයක් කියන්න පුළුවන්ද?', sent: 'හරි, විස්තර ඔයාගේ දුරකථනයට එව්වා. ටික වෙලාවකින් ලැබෙයි.', not_set_up: 'සමාවෙන්න, මේ වෙලාවේ පණිවිඩ එවන්න බෑ. විස්තර මම දැන් කියන්නම්.', nothing_to_send: 'සමාවෙන්න, ඒ ගැන එවන්න පුළුවන් විස්තර මගේ ළඟ නෑ.'}
+lead: {offer: 'TIKIRII ඔයාගේ business එකට වැඩ කරන විදිහ පෙන්නන්න, අපේ කණ්ඩායම එක්ක නොමිලේ demo එකක් book කරන්නද?', ask_name: 'ඔයාගේ නම කියන්න පුළුවන්ද?', ask_business: 'ඔයාගේ ව්‍යාපාරයේ නම මොකක්ද?', ask_time: 'demo එක ගැන අපේ කණ්ඩායමට ඔයාට කතා කරන්න හොඳම වෙලාව කවදාද?', use_caller_id: 'ඔයා දැන් කතා කරන {phone} අංකයටම අපේ කණ්ඩායමට කතා කරන්න පුළුවන්ද?', booked: 'ස්තූතියි. ඔයාගේ demo ඉල්ලීම book කළා. අපේ කණ්ඩායම ඉක්මනින් ඔයාට කතා කරලා ඒක සූදානම් කරයි.', confirm_details: 'විස්තර එක පාරක් බලමු. ඔයාගේ නම {name}, ව්‍යාපාරය {business}, අපේ කණ්ඩායම ඔයාට {time} {phone} අංකයට කතා කරයි. හරිද?', booked_sms: 'ස්තූතියි. ඔයාගේ demo ඉල්ලීම book කළා, ඒක තහවුරු කරන පණිවිඩයක් ඔයාගේ දුරකථනයට එව්වා. අපේ කණ්ඩායම ඉක්මනින් ඔයාට කතා කරලා ඒක සූදානම් කරයි.', updated: 'ස්තූතියි. ඔයාගේ demo ඉල්ලීම යාවත්කාලීන කළා. අපේ කණ්ඩායම ඉක්මනින් ඔයාට කතා කරලා ඒක සූදානම් කරයි.', updated_sms: 'ස්තූතියි. ඔයාගේ demo ඉල්ලීම යාවත්කාලීන කළා, නිවැරදි කළ විස්තර ඔයාගේ දුරකථනයට එව්වා.', already_booked: 'ඔයාගේ demo ඉල්ලීම දැනටමත් book කරලා තියෙන්නේ. අපේ කණ්ඩායම ඉක්මනින් ඔයාට කතා කරයි.'}
+sms:
+  intro: '{company}: සිංහල, ඉංග්‍රීසි සහ දෙමළ භාෂාවලින් ඇමතුම්වලට පිළිතුරු දෙන AI voice agent.'
+  overview_title: කරන දේ
+  capabilities_title: TIKIRII කරන වැඩ
+  industry_title: '{industry} සඳහා'
+  contact_title: අප අමතන්න
+  website_line: 'වෙබ් අඩවිය: {url}'
+  email_line: 'ඊමේල්: {email}'
+  phone_line: 'දුරකථන: {phone}'
+  footer: නොමිලේ demo එකක් book කරන්න ඕනෑම වෙලාවක අපට කතා කරන්න.
+  demo_booked: '{company}: ස්තූතියි {name}. ඔයාගේ නොමිලේ demo ඉල්ලීම book කළා.'
+  demo_updated: '{company}: {name}, ඔයාගේ demo ඉල්ලීම යාවත්කාලීන කළා.'
+  demo_business: 'ව්‍යාපාරය: {business}'
+  demo_time: 'අපි කතා කරන්නේ: {time}'
+  demo_footer: 'අපේ කණ්ඩායම ඉක්මනින් ඔයාට කතා කරලා demo එක සූදානම් කරයි.'
+  weekdays: [සඳුදා, අඟහරුවාදා, බදාදා, බ්‍රහස්පතින්දා, සිකුරාදා, සෙනසුරාදා, ඉරිදා]
+language:
+  names: {si: සිංහල, ta: දෙමළ, en: ඉංග්‍රීසි}
+spoken_numbers:
+  words: [බිංදුව, එක, දෙක, තුන, හතර, පහ, හය, හත, අට, නවය, දහය, එකොළහ, දොළහ, දහතුන, දාහතර, පහළොව, දාසය, දාහත, දහඅට, දහනවය, විස්ස, විසි එක, විසි දෙක, විසි තුන, විසි හතර, විසි පහ, විසි හය, විසි හත, විසි අට, විසි නවය, තිහ, තිස් එක, තිස් දෙක, තිස් තුන, තිස් හතර, තිස් පහ, තිස් හය, තිස් හත, තිස් අට, තිස් නවය, හතළිහ, හතළිස් එක, හතළිස් දෙක, හතළිස් තුන, හතළිස් හතර, හතළිස් පහ, හතළිස් හය, හතළිස් හත, හතළිස් අට, හතළිස් නවය, පනහ, පනස් එක, පනස් දෙක, පනස් තුන, පනස් හතර, පනස් පහ, පනස් හය, පනස් හත, පනස් අට, පනස් නවය, හැට, හැට එක, හැට දෙක, හැට තුන, හැට හතර, හැට පහ, හැට හය, හැට හත, හැට අට, හැට නවය, හැත්තෑව, හැත්තෑ එක, හැත්තෑ දෙක, හැත්තෑ තුන, හැත්තෑ හතර, හැත්තෑ පහ, හැත්තෑ හය, හැත්තෑ හත, හැත්තෑ අට, හැත්තෑ නවය, අසූව, අසූ එක, අසූ දෙක, අසූ තුන, අසූ හතර, අසූ පහ, අසූ හය, අසූ හත, අසූ අට, අසූ නවය, අනූව, අනූ එක, අනූ දෙක, අනූ තුන, අනූ හතර, අනූ පහ, අනූ හය, අනූ හත, අනූ අට, අනූ නවය]
+  hundreds: [එකසිය, දෙසිය, තුන්සිය, හාරසිය, පන්සිය, හයසිය, හත්සිය, අටසිය, නවසිය]
+  hundreds_alone: [එකසියය, දෙසියය, තුන්සියය, හාරසියය, පන්සියය, හයසියය, හත්සියය, අටසියය, නවසියය]
+  joined: '{words}යි'
+  separator: ', '
+  phone_groups: [3, 3, 2, 2]
+  lakh: '{words} ලක්ෂ'
+  thousand: '{words} දහස්'
+  amounts:
+    2000: දෙදහස
+    5000: පන්දහස
+    9500: නවදහස් පන්සියය
+    12000: දොළොස් දහස
+    14990: දාහතර දහස් නවසිය අනූව
+    18000: දහඅට දහස
+    28990: විසි අට දහස් නවසිය අනූව
+    40000: හතළිස් දහස
+    49990: හතළිස් නවදහස් නවසිය අනූව
+    119990: එක් ලක්ෂ දහනව දහස් නවසිය අනූව
+    229990: දෙලක්ෂ විසිනව දහස් නවසිය අනූව
+say_instead: {ඔබ: ඔයා, ඔබට: ඔයාට, ඔබගේ: ඔයාගේ, අපගේ: අපේ, පවසන්න: කියන්න, සදහන් කරන්න: කියන්න, හැකිය: පුළුවන්, නොමැත: නෑ, LKR: රුපියල්}

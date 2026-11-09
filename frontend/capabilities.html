@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What it does · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>What it does</h1>
+      <p class="subtitle">The call jobs and strengths the agent explains. The first six also go in the summary message callers can ask for.</p>
+    </div>
+    <button type="button" class="primary" id="add-btn">Add item</button>
+  </div>
+  <div class="card"><div id="list"></div></div>
+</main>
+
+<dialog id="item-dialog">
+  <form id="item-form" method="dialog">
+    <h2 id="dialog-title">Add item</h2>
+    <div class="field"><label for="f-title">Title</label><input type="text" id="f-title" name="title" maxlength="200" required /></div>
+    <div class="field"><label for="f-desc">Description</label><textarea id="f-desc" name="description" rows="3"></textarea><p class="hint">Written in English for the model; it explains it in the caller's language.</p></div>
+    <div class="field"><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" name="is_active" /> Tell callers about it</label></div>
+    <div class="actions">
+      <button type="button" id="cancel-btn">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/api.js"></script>
+<script src="js/catalog.js"></script>
+<script>
+  catalogPage({
+    endpoint: "/api/capabilities",
+    singular: "item",
+    empty: "Nothing yet.",
+    defaults: { is_active: true },
+    render: (c) => [el("strong", {}, c.title), el("div", { class: "sub" }, c.description)],
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Industries · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>Industries</h1>
+      <p class="subtitle">Kinds of business TIKIRII is offered to. When a caller says what their business is, the agent explains what it would do there from the matching entry.</p>
+    </div>
+    <button type="button" class="primary" id="add-btn">Add industry</button>
+  </div>
+  <div class="card"><div id="list"></div></div>
+</main>
+
+<dialog id="item-dialog">
+  <form id="item-form" method="dialog">
+    <h2 id="dialog-title">Add industry</h2>
+    <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" name="name" maxlength="200" required /></div>
+    <div class="grid grid-2">
+      <div class="field"><label for="f-si">Name in Sinhala</label><input type="text" id="f-si" name="name_si" maxlength="200" /></div>
+      <div class="field"><label for="f-ta">Name in Tamil</label><input type="text" id="f-ta" name="name_ta" maxlength="200" /></div>
+    </div>
+    <div class="field"><label for="f-pitch">What TIKIRII does for them</label><textarea id="f-pitch" name="pitch" rows="3"></textarea></div>
+    <div class="field"><label for="f-tasks">Typical calls <span class="hint">(one per line; they also go in the summary message)</span></label><textarea id="f-tasks" name="tasks" rows="4"></textarea></div>
+    <div class="field"><label for="f-ex">A line a caller might say</label><input type="text" id="f-ex" name="example" maxlength="300" /></div>
+    <div class="field"><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" name="is_active" /> Tell callers about it</label></div>
+    <div class="actions">
+      <button type="button" id="cancel-btn">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/api.js"></script>
+<script src="js/catalog.js"></script>
+<script>
+  catalogPage({
+    endpoint: "/api/industries",
+    singular: "industry",
+    empty: "No industries yet.",
+    defaults: { is_active: true, tasks: [] },
+    toForm: (i) => ({ ...i, tasks: (i.tasks || []).join("\n") }),
+    render: (i) => [
+      el("strong", {}, i.name, [i.name_si, i.name_ta].filter(Boolean).length ? el("span", { class: "hint" }, ` · ${[i.name_si, i.name_ta].filter(Boolean).join(" · ")}`) : null),
+      el("div", { class: "sub" }, i.pitch),
+      i.tasks?.length ? el("div", { class: "meta" }, i.tasks.join(" · ")) : null,
+    ],
+  });
+</script>
+</body>
+</html>

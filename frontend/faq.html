@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>FAQ</h1>
+      <p class="subtitle">Questions callers ask about TIKIRII. Write answers the way the agent should say them.</p>
+    </div>
+    <button type="button" class="primary" id="add-btn">Add question</button>
+  </div>
+  <div class="card"><div id="list"></div></div>
+</main>
+
+<dialog id="item-dialog">
+  <form id="item-form" method="dialog">
+    <h2 id="dialog-title">Add question</h2>
+    <div class="field"><label for="f-q">Question</label><textarea id="f-q" name="question" rows="2" required></textarea></div>
+    <div class="field"><label for="f-a">Answer</label><textarea id="f-a" name="answer" rows="4" required></textarea></div>
+    <div class="field"><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" name="is_active" /> Tell callers about it</label></div>
+    <div class="actions">
+      <button type="button" id="cancel-btn">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/api.js"></script>
+<script src="js/catalog.js"></script>
+<script>
+  catalogPage({
+    endpoint: "/api/faqs",
+    singular: "question",
+    empty: "No questions yet.",
+    defaults: { is_active: true },
+    render: (f) => [el("strong", {}, f.question), el("div", { class: "sub" }, f.answer)],
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test call · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .keypad { display: grid; grid-template-columns: repeat(3, 56px); gap: 8px; justify-content: center; margin-top: 12px; }
+    .keypad button { height: 44px; font-size: 18px; font-weight: 600; }
+    .keypad[hidden] { display: none; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Test call</h1>
+  <p class="subtitle">Talk to the agent through your microphone, exactly as a caller would: press 1, 2 or 3 on the keypad for Sinhala, Tamil or English. Use headphones so it doesn't hear itself.</p>
+
+  <div class="grid grid-2">
+    <div>
+      <div class="card">
+        <div class="call-status"><span class="dot" id="dot"></span><span id="status-text">Ready</span></div>
+        <div class="field" style="margin-top:14px">
+          <label for="caller-number">Simulated caller number (Caller ID)</label>
+          <input type="text" id="caller-number" value="0771234567" placeholder="e.g. 0771234567" style="max-width:240px" />
+          <p class="hint">The agent offers to send details to this number. Use your own mobile to try a real message once SMS is set up.</p>
+        </div>
+        <div class="field">
+          <label for="lang">Start in</label>
+          <select id="lang" style="max-width:240px"><option value="">Language menu (press a key)</option><option value="si">සිංහල Sinhala</option><option value="ta">தமிழ் Tamil</option><option value="en">English</option></select>
+          <p class="hint">Pick a language to skip the menu recording, or leave it to hear the menu.</p>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button type="button" id="start-btn" class="primary big">Start call</button>
+          <button type="button" id="hangup-btn" class="danger big" hidden>Hang up</button>
+          <a class="btn" id="detail-link" hidden>View saved call →</a>
+        </div>
+        <div class="keypad" id="keypad" hidden></div>
+      </div>
+      <div class="card">
+        <h2>Things to try</h2>
+        <ul style="margin:10px 0 0;padding-left:20px;color:var(--text-2)">
+          <li>"මට සැලෝන් එකක් තියෙනවා. TIKIRII මට මොකද කරන්නේ?" (the agent explains what it does for a salon)</li>
+          <li>"What can you do for a restaurant?" / "Can you make outgoing calls?" / "Do you work with Google Calendar?"</li>
+          <li>"How much does it cost?" (it asks about your calls, recommends a package with its listed price, and offers a demo; it must not invent a price)</li>
+          <li>"I'd like a demo" (it asks your name, business and a good time, confirms your number, and saves a demo request)</li>
+          <li>"Please send me the details by message" (the agent confirms your number first).</li>
+          <li>"Are you a robot?" (it says honestly that it is an AI voice agent)</li>
+          <li>Press 2, then speak Sinhala: the agent should keep to Tamil.</li>
+          <li>Interrupt the agent while it talks, or stay silent to hear "are you still there?".</li>
+        </ul>
+        <p class="hint" style="margin-top:12px">Edit what it knows on the <a href="profile.html">Company &amp; agent</a>, <a href="capabilities.html">What it does</a>, <a href="industries.html">Industries</a> and <a href="faq.html">FAQ</a> pages. Demo requests appear on <a href="leads.html">Demo requests</a>. Changes apply to the next call.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Live transcript</h2>
+      <div class="transcript" id="transcript"></div>
+    </div>
+  </div>
+</main>
+<script src="js/api.js"></script>
+<script src="public/audio/player.js"></script>
+<script src="public/call-client.js"></script>
+<script>
+  const startBtn = document.getElementById("start-btn");
+  const hangupBtn = document.getElementById("hangup-btn");
+  const link = document.getElementById("detail-link");
+  const view = new TranscriptView(document.getElementById("transcript"), { agent: "Agent", caller: "You" });
+  view.reset("The conversation will appear here.");
+
+  function setStatus(text, live = false) {
+    document.getElementById("status-text").textContent = text;
+    document.getElementById("dot").classList.toggle("live", live);
+  }
+
+  const client = new CallClient({
+    wsPath: "/ws/test-call",
+    onStatus: setStatus,
+    onEvent: (ev) => {
+      view.handle(ev);
+      if (ev.type === "started") link.href = `call.html?id=${ev.call_id}`;
+      if (ev.type === "error") toast(ev.message, true);
+    },
+    onFinish: (info) => {
+      setStatus(`Call ended — ${String(info.reason || info.status).replaceAll("_", " ")}`);
+      hangupBtn.hidden = true;
+      keypad.hidden = true;
+      startBtn.hidden = false;
+      startBtn.disabled = false;
+      startBtn.textContent = "Start another call";
+      if (link.href) link.hidden = false;
+    },
+  });
+
+  startBtn.addEventListener("click", async () => {
+    startBtn.disabled = true;
+    link.hidden = true;
+    link.removeAttribute("href");
+    view.reset();
+    try {
+      const num = document.getElementById("caller-number")?.value.trim() || "";
+      const lang = document.getElementById("lang").value;
+      client.wsPath = `/ws/test-call?caller_number=${encodeURIComponent(num)}${lang ? `&lang=${lang}` : ""}`;
+      await client.start();
+      startBtn.hidden = true;
+      hangupBtn.hidden = false;
+      keypad.hidden = false;
+    } catch (err) {
+      toast(err.message, true);
+      view.system(err.message);
+      setStatus("Ready");
+      startBtn.disabled = false;
+    }
+  });
+  hangupBtn.addEventListener("click", () => client.hangup());
+
+  // Keypad for the language menu ("press 1 for Sinhala...").
+  const keypad = document.getElementById("keypad");
+  for (const d of "123456789*0#") {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = d;
+    b.addEventListener("click", () => client.sendDigit(d));
+    keypad.append(b);
+  }
+  document.addEventListener("keydown", (e) => {
+    if (!keypad.hidden && /^[0-9*#]$/.test(e.key) && !/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) client.sendDigit(e.key);
+  });
+
+  const blocked = CallClient.micUnavailableReason();
+  if (blocked) setStatus(blocked);
+</script>
+</body>
+</html>

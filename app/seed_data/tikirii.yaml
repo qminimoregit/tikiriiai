@@ -1,0 +1,255 @@
+# What the agent knows about TIKIRII on first start. Taken from the marketing site (callagentnew/src/i18n.js and
+# content.js). Everything is editable in the admin panel afterwards; this file is only read into an empty database.
+
+profile:
+  company_name: TIKIRII
+  tagline: The AI voice agent that speaks Sinhala, English and Tamil.
+  overview: |
+    TIKIRII is an AI voice agent for Sri Lankan businesses. It answers and makes phone calls in Sinhala, English and
+    Tamil, in a natural, friendly voice, 24 hours a day, every day. It answers customers' questions from the
+    business's own information, books appointments, takes orders, collects customer details, and makes reminder and
+    follow-up calls. It does not replace a business's staff: it takes the repeatable, routine calls off their plate
+    so they can focus on the customers who need them most. Each business gets its own agent, with its own name,
+    personality, greeting, languages and knowledge.
+  website: ''
+  website_say_as: ''
+  contact_email: tikiriiai@gmail.com
+  email_say_as: tikirii a i at gmail dot com
+  sales_phone: ''
+  pricing_note: |
+    Monthly voice agent packages (the price is per month, plus a one-time installation fee):
+    - Lite: 5 hours (300 minutes), 1 call at a time. LKR 14,990 a month, installation LKR 5,000.
+    - Business: 10 hours (600 minutes), 1 call at a time. LKR 28,990 a month, installation LKR 5,000.
+    - Professional: 20 hours (1,200 minutes), 2 calls at a time. LKR 49,990 a month, installation LKR 12,000.
+    - Business Plus: 50 hours (3,000 minutes), 3 calls at a time. LKR 119,990 a month, installation LKR 18,000.
+    - Enterprise: 100 hours (6,000 minutes), 5 calls at a time. LKR 229,990 a month, installation LKR 40,000.
+    Optional add-ons:
+    - One more call at the same time (additional concurrent connection): LKR 5,000.
+    - Extra 1 hour (60 minutes): LKR 2,000.
+    - Extra 5 hours (300 minutes): LKR 9,500.
+    Anything not listed here (discounts, taxes, annual deals, needs above Enterprise) is confirmed by the team in a demo.
+  getting_started: |
+    1. Request a demo (this call can book it). 2. The team talks with the business about its most common calls,
+    languages and what a successful call looks like. 3. TIKIRII is shaped around the business: its name, personality,
+    tone, greeting, languages, services and frequently asked questions. 4. Real scenarios are tested together with
+    the business. 5. The business takes its new voice live with its customers.
+  timezone: Asia/Colombo
+  agent_name: Tikirii
+  agent_voice: ''
+  default_language: si
+  languages_enabled: [si, ta, en]
+  message_channel: sms
+  extra_info: |
+    - This phone line itself is answered by TIKIRII: the caller is hearing the product working right now. A business's own agent can have its own name, voice and personality.
+    - TIKIRII can handle incoming calls and place outgoing calls (reminders, confirmations, follow-ups) on the business's behalf.
+    - Peak hours: TIKIRII can take many calls at the same time, so callers are not left waiting on hold.
+    - After hours: callers still get an answer when the team has signed off, so a missed call becomes an opportunity.
+    - Calls can be recorded, with transcripts and call summaries, and leads and bookings can be sent into the business's own systems.
+  agent_instructions: |
+    - Find out early what kind of business the caller has (or what they are interested in), then explain what TIKIRII would do for that kind of business, using the matching kind of business in your instructions. Give one or two concrete examples of calls it would handle there.
+    - Keep it a conversation: do not read out every feature. Answer what was asked, add one useful point, then ask a question.
+    - When the caller sounds interested, offer to book a free demo with the team. Do not push: offer at most twice in a call.
+
+capabilities:
+  - title: Incoming calls, answered
+    description: Every call gets picked up. Enquiries, bookings and orders are handled the moment someone calls in.
+  - title: Outgoing calls, automated
+    description: Reaches customers at scale with reminders, confirmations and follow-up calls that TIKIRII places on the business's behalf.
+  - title: Appointments, booked
+    description: Customers can book, confirm, reschedule or cancel an appointment without waiting on hold.
+  - title: Orders, taken
+    description: Captures the customer's name, contact details, items and delivery information, then confirms the order on the call.
+  - title: Reminders, sent
+    description: Payment reminders, appointment confirmations and other important notices delivered by voice, right on time.
+  - title: Follow-ups, handled
+    description: Recurring check-ins and follow-up calls happen on schedule, without anyone having to remember to make them.
+  - title: Three languages
+    description: Speaks Sinhala, English and Tamil naturally, so every caller hears a familiar voice in the language they think in.
+  - title: Always on
+    description: Ready for calls 24 hours a day, every day, including after hours, weekends and holidays.
+  - title: Answers from the business's own knowledge
+    description: Answers common questions from the business's own information (services, prices, hours, FAQs) and collects customer details.
+
+integrations:
+  - name: Custom CRM
+    description: Syncs leads, call summaries and contacts directly into the business's own CRM or database.
+  - name: Google Calendar
+    description: Booked appointments appear in the business's calendar in real time.
+  - name: Google Sheets
+    description: Imports leads from a spreadsheet (for example for outbound calls) and keeps them in sync.
+  - name: Slack
+    description: Real-time alerts for new leads, calls and bookings.
+  - name: WhatsApp
+    description: Sends confirmations and reminders alongside every call.
+  - name: n8n
+    description: Streams events into hundreds of other apps and workflows.
+  - name: REST API and webhooks
+    description: Any other system can be connected with the REST API and webhooks.
+
+faqs:
+  - question: Which languages does TIKIRII speak?
+    answer: Sinhala, English and Tamil. The business chooses which of them its customers can use, and the experience is shaped around the business.
+  - question: Can I hear it before I decide?
+    answer: Yes. This call is TIKIRII itself. The caller can also request a personal demo, where the team shows TIKIRII working with the caller's own kind of calls.
+  - question: Can TIKIRII work for my kind of business?
+    answer: Very likely. It is used for restaurants, salons, clinics, shops, banks, insurance, schools, real estate, vehicle service, delivery, call centers, sales teams and more. In a demo the team checks how it fits the caller's own calls and workflow.
+  - question: How much does it cost?
+    answer: Packages start at LKR 14,990 a month for Lite (5 hours of calls) and go up to Enterprise at LKR 229,990 a month (100 hours, 5 calls at a time), plus a one-time installation fee. The right package depends on how many calls the business gets and how long they are, so ask about those and recommend one.
+  - question: How do we get started?
+    answer: Start with a demo request. The team discusses the business and the calls to improve, then works through the setup, testing and going live together.
+  - question: Is it a robot? Will my customers know?
+    answer: It is an AI voice agent with a natural, friendly voice, made to sound like a real conversation rather than a robotic phone menu. It is honest that it is an AI assistant if a caller asks.
+  - question: Does it replace my staff?
+    answer: No. It takes the routine, repeatable calls (common questions, bookings, reminders, follow-ups) so the team can focus on the customers who need a person.
+  - question: Can it pass a call to a person?
+    answer: A business can decide what happens when a caller needs a person, for example taking their details for a call back. The team sets this up during onboarding to fit the business.
+  - question: Can it make calls as well as answer them?
+    answer: Yes. It can place outgoing calls for reminders, confirmations, payment notices and follow-ups, on schedule.
+  - question: Can it work with my existing number and systems?
+    answer: It is set up around the business's phone line, and it can connect to a CRM, Google Calendar, Google Sheets, Slack, WhatsApp, n8n, or any system through the REST API and webhooks. The team checks the details in the demo.
+  - question: Are calls recorded?
+    answer: Calls can be recorded and transcribed so the business can review them and see the details collected. This is set up to fit each business.
+
+industries:
+- name: Restaurants
+  name_si: අවන්හල්
+  name_ta: உணவகங்கள்
+  pitch: Welcome hungry callers, answer their questions, and help them plan their next visit in the language they prefer.
+  tasks:
+  - Table reservation requests
+  - Menu and opening hours
+  - Group dining enquiries
+  example: A table for four tonight, please.
+- name: Salons & beauty
+  name_si: සැලෝන් සහ රූපලාවණ්‍ය
+  name_ta: அழகு நிலையங்கள்
+  pitch: Help clients find their next appointment while your team gives the person in the chair their full attention.
+  tasks:
+  - Hair and beauty appointments
+  - Services and pricing enquiries
+  - Stylist and time preferences
+  example: Can I book a haircut for Saturday?
+- name: Hospitality
+  name_si: හෝටල් සහ නවාතැන්
+  name_ta: விருந்தோம்பல்
+  pitch: Help guests feel at home from the very first call, in the language they’re most comfortable with.
+  tasks:
+  - Room availability enquiries
+  - Stay and booking requests
+  - Check-in and guest information
+  example: A double room for two nights, please.
+- name: Healthcare
+  name_si: සෞඛ්‍ය සේවා
+  name_ta: சுகாதாரம்
+  pitch: Make it easier for patients to reach your practice with a friendly voice for everyday administrative questions.
+  tasks:
+  - Appointment enquiries
+  - Clinic hours and directions
+  - General practice information
+  example: Can I make an appointment for tomorrow?
+- name: Retail & e-commerce
+  name_si: සිල්ලර සහ ඊ-වාණිජ්‍යය
+  name_ta: சில்லறை & இ-வணிகம்
+  pitch: Give shoppers a helpful first point of contact, whether they’re asking about a product or following up on an order.
+  tasks:
+  - Order and delivery enquiries
+  - Product and store information
+  - Customer service conversations
+  example: Could you help me check my order?
+- name: Professional services
+  name_si: වෘත්තීය සේවා
+  name_ta: தொழில்முறை சேவைகள்
+  pitch: Welcome every enquiry with a clear, professional voice that helps people take their next step with your business.
+  tasks:
+  - Service enquiries
+  - Consultation requests
+  - New client introductions
+  example: I'd love to book a consultation.
+- name: Banking & finance
+  name_si: බැංකු සහ මූල්‍ය සේවා
+  name_ta: வங்கி & நிதி சேவைகள்
+  pitch: Give customers a friendly voice for account questions, loan enquiries, and payment reminders, without adding to your
+    branch queue.
+  tasks:
+  - Loan and leasing enquiries
+  - Branch hours and locations
+  - Payment and installment reminders
+  example: What's the interest rate on a personal loan?
+- name: Insurance
+  name_si: රක්ෂණ
+  name_ta: காப்பீடு
+  pitch: Answer policy questions, send renewal reminders, and help customers feel confident about their cover, every time
+    they call.
+  tasks:
+  - Policy and premium enquiries
+  - Renewal reminder calls
+  - New cover information
+  example: When does my policy need to be renewed?
+- name: Schools & education
+  name_si: පාසල් සහ අධ්‍යාපනය
+  name_ta: பள்ளிகள் & கல்வி
+  pitch: Help parents and students get clear answers about courses, fees, and registration, any time they call.
+  tasks:
+  - Course and class information
+  - Fees and intake enquiries
+  - Registration and reminder calls
+  example: What are the fees for the new intake?
+- name: Real estate
+  name_si: ඉඩම් සහ දේපළ
+  name_ta: நிலம் & சொத்து
+  pitch: Capture buyer requirements, budget, and preferred location, then help schedule the site visits that matter.
+  tasks:
+  - Property and project information
+  - Buyer requirements and budget
+  - Site visit scheduling
+  example: Do you have anything in the three-bedroom range?
+- name: Vehicle sales & service
+  name_si: වාහන අලෙවිය සහ සේවා
+  name_ta: வாகன விற்பனை & சேவை
+  pitch: Take service bookings, send maintenance reminders, and answer vehicle enquiries without pulling your team off the
+    workshop floor.
+  tasks:
+  - Service appointment bookings
+  - Maintenance reminder calls
+  - Vehicle and test drive enquiries
+  example: Can I book my car in for a service this week?
+- name: Logistics & delivery
+  name_si: ප්‍රවාහන සහ බෙදාහැරීම්
+  name_ta: தளவாடம் & விநியோகம்
+  pitch: Confirm delivery windows, check customer availability, and send pickup or delay notifications, without tying up your
+    dispatch team.
+  tasks:
+  - Delivery and shipment enquiries
+  - Delivery confirmation calls
+  - Delay and pickup notifications
+  example: What time will my delivery arrive today?
+- name: Call centers & support
+  name_si: ඇමතුම් මධ්‍යස්ථාන සහ සහාය සේවා
+  name_ta: அழைப்பு மையம் & ஆதரவு
+  pitch: Let TIKIRII answer common questions and collect the details your support team needs, so they can focus on the calls
+    that need a human touch.
+  tasks:
+  - Frequently asked questions
+  - Customer requirement collection
+  - Call notes and outcome logging
+  example: I just have a quick question about my account.
+- name: Sales & marketing
+  name_si: අලෙවිකරණ සහ විකුණුම්
+  name_ta: விற்பனை & மார்க்கெட்டிங்
+  pitch: Reach out to new leads, introduce your offers, and gauge interest, so your sales team spends their time on the conversations
+    that convert.
+  tasks:
+  - Outbound calls to lead lists
+  - Offers and promotions explained
+  - Interest and follow-up scheduling
+  example: Tell me more about your latest offer.
+- name: Telecom & utilities
+  name_si: විදුලි සංදේශ සහ උපයෝගිතා සේවා
+  name_ta: தொலைத்தொடர்பு & பயன்பாட்டு சேவைகள்
+  pitch: Handle bill questions, outage updates, and service requests at any hour, so customers get answers in their own language
+    without waiting in a queue.
+  tasks:
+  - Bill and balance enquiries
+  - Service outage updates
+  - New connection and package requests
+  example: My internet has been down since this morning.

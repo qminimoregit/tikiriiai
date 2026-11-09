@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo requests · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>Demo requests</h1>
+      <p class="subtitle">Callers who asked for a demo. The agent never promises a time: call them back and set their status as you go.</p>
+    </div>
+    <select id="status" style="width:auto">
+      <option value="">All</option><option value="new">New</option><option value="contacted">Contacted</option>
+      <option value="demo_booked">Demo booked</option><option value="closed">Closed</option>
+    </select>
+  </div>
+  <div class="card"><div id="list"></div>
+    <div class="pager">
+      <span class="hint" id="page-info"></span>
+      <button type="button" class="small" id="prev">← Newer</button>
+      <button type="button" class="small" id="next">Older →</button>
+    </div>
+  </div>
+</main>
+
+<dialog id="lead-dialog">
+  <form id="lead-form" method="dialog">
+    <h2 id="lead-title">Follow up</h2>
+    <div class="field"><label for="f-status">Status</label>
+      <select id="f-status" name="status"><option value="new">New</option><option value="contacted">Contacted</option>
+        <option value="demo_booked">Demo booked</option><option value="closed">Closed</option></select></div>
+    <div class="field"><label for="f-notes">Team notes</label><textarea id="f-notes" name="staff_notes" rows="4"></textarea></div>
+    <div class="actions">
+      <button type="button" id="cancel-btn">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/api.js"></script>
+<script>
+  const STATUS_LABELS = { new: "new", contacted: "contacted", demo_booked: "demo booked", closed: "closed" };
+  let page = 1, editing = null;
+  const dialog = document.getElementById("lead-dialog"), form = document.getElementById("lead-form");
+
+  function leadCard(x) {
+    const langs = (x.languages || []).map((c) => LANG_LABELS[c] || c).join(", ");
+    return el("div", { class: "msg-card" },
+      el("div", {},
+        el("div", { class: "who" }, x.name || "No name", x.business_name ? ` · ${x.business_name}` : "", x.industry ? el("span", { class: "hint" }, ` · ${x.industry}`) : null),
+        el("div", { class: "body" }, x.notes || el("span", { class: "hint" }, "No notes")),
+        el("div", { class: "meta" },
+          el("span", {}, el("a", { href: `tel:${x.phone}` }, x.phone || "no phone")),
+          x.email ? el("span", {}, x.email) : null,
+          x.preferred_time ? el("span", {}, `Call back: ${x.preferred_time}`) : null,
+          langs ? el("span", {}, `Languages: ${langs}`) : null,
+          el("span", {}, `Call in ${LANG_LABELS[x.language] || "—"}`),
+          el("span", {}, fmtDT(x.created_at)),
+          x.call_id ? el("a", { href: `call.html?id=${x.call_id}` }, `call #${x.call_id}`) : null),
+        x.staff_notes ? el("div", { class: "note" }, x.staff_notes) : null),
+      el("div", { class: "actions", style: "align-items:flex-start" },
+        badge(STATUS_LABELS[x.status] || x.status, x.status === "new" ? "new" : x.status === "closed" ? "inactive" : "confirmed"),
+        el("button", { type: "button", class: "small", onclick: () => open(x) }, "Update"),
+        el("button", { type: "button", class: "small danger", onclick: () => remove(x) }, "Delete")));
+  }
+
+  async function load() {
+    await appReady;
+    const status = document.getElementById("status").value;
+    const data = await api(`/api/leads?page=${page}${status ? `&status=${status}` : ""}`);
+    clear(document.getElementById("list"), data.items.length ? data.items.map(leadCard)
+      : el("p", { class: "hint", style: "margin:0" }, "No demo requests yet. When a caller books a demo, it appears here."));
+    const pages = Math.max(1, Math.ceil(data.total / data.page_size));
+    document.getElementById("page-info").textContent = `${data.total} request${data.total === 1 ? "" : "s"} · page ${page} of ${pages}`;
+    document.getElementById("prev").disabled = page <= 1;
+    document.getElementById("next").disabled = page >= pages;
+  }
+
+  function open(x) {
+    editing = x;
+    document.getElementById("lead-title").textContent = `Follow up: ${x.name || x.phone}`;
+    fillForm(form, x);
+    dialog.showModal();
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      await api(`/api/leads/${editing.id}`, { method: "PUT", body: formData(form) });
+      dialog.close();
+      toast("Saved.");
+      await load();
+    } catch (err) { toast(err.message, true); }
+  });
+
+  async function remove(x) {
+    if (!(await confirmAction("Delete this demo request? This can't be undone."))) return;
+    await api(`/api/leads/${x.id}`, { method: "DELETE" });
+    load().catch((e) => toast(e.message, true));
+  }
+
+  document.getElementById("cancel-btn").addEventListener("click", () => dialog.close());
+  document.getElementById("status").addEventListener("change", () => { page = 1; load().catch((e) => toast(e.message, true)); });
+  document.getElementById("prev").addEventListener("click", () => { page--; load().catch((e) => toast(e.message, true)); });
+  document.getElementById("next").addEventListener("click", () => { page++; load().catch((e) => toast(e.message, true)); });
+  load().catch((e) => toast(e.message, true));
+</script>
+</body>
+</html>

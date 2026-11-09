@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Call · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <a class="back" href="calls.html">← All calls</a>
+  <div class="page-head">
+    <h1 id="title">Call</h1>
+    <button type="button" class="small danger" id="delete-btn">Delete call</button>
+  </div>
+  <div class="grid grid-2">
+    <div>
+      <div class="card" id="recording-card" hidden>
+        <h2>Recording</h2>
+        <audio id="recording" controls preload="metadata" style="width:100%;margin-top:14px"></audio>
+        <p class="hint" style="margin:8px 0 0"><a id="recording-dl" download>Download</a></p>
+      </div>
+      <div class="card"><h2>Details</h2><dl class="kv" id="details" style="margin-top:14px"></dl></div>
+      <div class="card" id="leads-card" hidden><h2>Demo request from this call</h2><div id="leads"></div></div>
+      <div class="card" id="messages-card" hidden><h2>Messages sent from this call</h2><div id="messages"></div></div>
+    </div>
+    <div class="card">
+      <h2>Transcript</h2>
+      <p class="hint" style="margin:0 0 12px">Transcribed live by the speech model; Sinhala and Tamil may contain small errors.</p>
+      <div class="transcript full" id="transcript"></div>
+    </div>
+  </div>
+</main>
+<script src="js/api.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get("id");
+
+  function bubble(turn) {
+    if (turn.role === "tool" || turn.role === "menu" || turn.role === "note") return el("div", { class: "msg tool" }, turn.text);
+    return el("div", { class: `msg ${turn.role}` },
+      el("div", { class: "who" }, turn.role === "agent" ? "Agent" : "Caller", turn.t !== undefined ? ` · ${fmtDuration(Math.round(turn.t))}` : ""),
+      turn.text,
+      turn.interrupted ? el("span", { class: "cut" }, "(interrupted)") : null);
+  }
+
+  async function load() {
+    await appReady;
+    const c = await api(`/api/calls/${id}`);
+    document.getElementById("title").textContent = `Call #${c.id}`;
+    document.getElementById("recording-card").hidden = !c.has_recording;
+    if (c.has_recording) {
+      document.getElementById("recording").src = `/api/calls/${c.id}/recording`;
+      document.getElementById("recording-dl").href = `/api/calls/${c.id}/recording`;
+    }
+    const rows = [
+      ["When", fmtDT(c.started_at)],
+      ["Channel", CHANNEL_LABELS[c.channel] || c.channel],
+      ["Caller", c.caller_number || "—"],
+      ["Length", fmtDuration(c.duration_seconds)],
+      ["Language", LANG_LABELS[c.language] || "—"],
+      ["Status", badge(c.status)],
+      ["Ended because", (c.end_reason || "—").replaceAll("_", " ")],
+    ];
+    if (c.reconnects) rows.push(["Reconnects", String(c.reconnects)]);
+    if (c.error) rows.push(["Error", c.error]);
+    clear(document.getElementById("details"), rows.map(([k, v]) => [el("dt", {}, k), el("dd", {}, v)]));
+    document.getElementById("leads-card").hidden = !c.leads.length;
+    clear(document.getElementById("leads"), c.leads.map((x) =>
+      el("div", { class: "msg-card" },
+        el("div", {},
+          el("div", { class: "who" }, x.name || "No name", x.business_name ? ` · ${x.business_name}` : "", x.industry ? ` · ${x.industry}` : ""),
+          el("div", { class: "body" }, x.notes || "—"),
+          el("div", { class: "meta" }, el("span", {}, x.phone), x.preferred_time ? el("span", {}, `Call back: ${x.preferred_time}`) : null,
+            el("a", { href: "leads.html" }, "Demo requests →"))),
+        el("div", {}, badge(x.status.replaceAll("_", " "), x.status === "new" ? "new" : "confirmed")))));
+    document.getElementById("messages-card").hidden = !c.messages.length;
+    clear(document.getElementById("messages"), c.messages.map((m) =>
+      el("div", { class: "msg-card" },
+        el("div", {},
+          el("div", { class: "who" }, m.phone, " · ", CHANNEL_NAMES[m.channel] || m.channel),
+          el("div", { class: "body", style: "white-space:pre-wrap" }, m.text),
+          m.error ? el("div", { class: "meta" }, m.error) : null),
+        el("div", {}, badge(m.status)))));
+    clear(document.getElementById("transcript"), c.transcript.length ? c.transcript.map(bubble) : el("p", { class: "hint" }, "Nothing was said on this call."));
+  }
+
+  document.getElementById("delete-btn").addEventListener("click", async () => {
+    if (!(await confirmAction("Delete this call, its recording and transcript? The record of messages sent and any demo request are kept."))) return;
+    await api(`/api/calls/${id}`, { method: "DELETE" });
+    location.href = "calls.html";
+  });
+
+  load().catch((e) => toast(e.message, true));
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+# English: everything the agent says in English. A call speaks only this language: the caller picked it in the language menu.
+#
+# Every language file has exactly the same keys. The app checks them at startup and refuses to start, naming the
+# file and the key, if one is missing or misspelt. Placeholders in {braces} are filled in by the app.
+#
+# Have a native speaker review this file: the agent speaks the way it is told to here.
+
+code: en
+name: English
+native_name: English
+transcription_codes: [en-US]
+whatsapp_language: en
+greeting: >-
+  Thank you for calling the Tikirii AI Agent.
+  Do calls to your business sometimes get missed? Are you losing orders or new customers because of it?
+  Do calls keep coming even on your days off, so you never get a break? Or is there no one to answer the calls that come in while your business is closed?
+  Now there's an easy solution.
+  You don't need to hire a separate staff member to answer calls.
+  We, the Tikirii AI Agent, can answer the calls to your business, even several calls at the same time.
+  We can give your customers the details they need about your services or products, take orders for you, and book appointments and reservations.
+  That means even when you're busy, on a holiday, or your business is closed, we can give your customers the support they need.
+  Would you like to know more about this?
+recording_notice: Please note that this call is recorded for quality purposes.
+style_rules: |
+  - Speak clear, warm, polite Sri Lankan English, like a friendly product specialist. Use simple words and short sentences.
+  - Many callers speak English as a second language: speak at a calm pace and avoid idioms, slang and jargon. Say "customer system" rather than "CRM" unless the caller uses the word.
+  - Say times naturally, for example "two in the afternoon", and never read out symbols or web addresses letter by letter.
+  - Say phone numbers exactly as the tools write them. Never turn digits into words yourself.
+hearing_hints: |
+  - The product name TIKIRII is said "ti-ki-ree". Callers may say "Tikiri", "Thikiri" or "Tiki": they mean TIKIRII.
+  - Callers shorten business types: "saloon" means a salon, "shop" can mean retail, "hotel" means hospitality, "clinic" or "channelling centre" means healthcare, "class" or "institute" means education, "leasing" means banking and finance.
+  - "Yes", "yeah", "ok", "sure" and "correct" mean yes. "No", "not now" and "later" mean no.
+glossary: {AI voice agent: an AI assistant that talks on the phone, incoming calls: calls customers make to the business, outgoing calls: calls the agent makes to customers, demo: a meeting where the team shows TIKIRII working for the caller's business, CRM: the customer system, integration: a connection to another system, lead: a possible customer}
+goodbye_phrases: [goodbye, good bye, bye, have a nice day, have a good day, have a great day, take care]
+join_word: and
+common: {ask_phone: 'Could you please tell me your mobile number?', read_back_phone: 'The number you gave is {phone}. Is that correct?', phone_ten_digits: 'I am sorry, a phone number has ten digits. Please say the whole number, starting with zero, slowly.', ask_new_phone: Please tell me the phone number you would like us to use., which_detail_wrong: 'I am sorry. Which detail is not correct?', please_repeat: 'I am sorry, I did not hear that clearly. Could you please say it again?', sorry_wrong: 'I am sorry, I gave you the wrong information.', anything_else: 'Is there anything else you would like to know about TIKIRII?', no_information: 'I am sorry, I do not have that information right now. Our team can answer that in a demo.', out_of_scope: 'I am sorry, I can only help with questions about {company}.', other_language: 'I am sorry, I can only speak English on this call. If you would like another language, please press the hash key to go back to the main menu and choose it.', still_there: 'Are you still there?', no_response: 'I have not received a response, so I am ending the call. Thank you for calling. Goodbye.', wrap_up: 'This call is nearly at its time limit. If you need anything else, please tell me now.', goodbye: Thank you for calling TIKIRII. Have a great day. Goodbye!}
+send: {offer: 'Would you like me to send a short summary about TIKIRII to your phone as a message?', ask_mobile: 'Could you please tell me the mobile number to send it to?', use_caller_id: 'Shall I send it to the number you are calling from, {phone}?', not_mobile: 'I am sorry, that is not a mobile number. Could you please give me a mobile number?', sent: Done. I have sent the details to your phone. They should arrive shortly., not_set_up: 'I am sorry, I cannot send messages right now. Let me tell you the details instead.', nothing_to_send: 'I am sorry, I have no details I can send about that.'}
+lead: {offer: 'Would you like to book a free demo with our team, so they can show you how TIKIRII would work for your business?', ask_name: 'May I have your name, please?', ask_business: 'What is the name of your business?', ask_time: 'When would be a good time for our team to call you about the demo?', use_caller_id: 'Can our team call you back on the number you are calling from, {phone}?', booked: 'Thank you. I have booked your demo request. Our team will call you soon to arrange it.', confirm_details: 'Let me check the details. Your name is {name}, your business is {business}, and our team will call you {time} on {phone}. Is that correct?', booked_sms: 'Thank you. I have booked your demo request and sent a confirmation to your phone. Our team will call you soon to arrange it.', updated: 'Thank you. I have updated your demo request. Our team will call you soon to arrange it.', updated_sms: 'Thank you. I have updated your demo request and sent the corrected details to your phone.', already_booked: 'Your demo request is already booked. Our team will call you soon.'}
+sms:
+  intro: '{company}: the AI voice agent that answers calls in Sinhala, English and Tamil.'
+  overview_title: What it does
+  capabilities_title: What TIKIRII handles
+  industry_title: 'For {industry}'
+  contact_title: Contact us
+  website_line: 'Website: {url}'
+  email_line: 'Email: {email}'
+  phone_line: 'Phone: {phone}'
+  footer: Call us back any time to book a free demo.
+  demo_booked: '{company}: thank you, {name}. Your free demo request is booked.'
+  demo_updated: '{company}: {name}, your demo request has been updated.'
+  demo_business: 'Business: {business}'
+  demo_time: 'We will call you: {time}'
+  demo_footer: 'Our team will call you soon to arrange the demo.'
+  weekdays: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+language:
+  names: {si: Sinhala, ta: Tamil, en: English}
+spoken_numbers:
+  words: []
+  hundreds: []
+  hundreds_alone: []
+  joined: '{words}'
+  separator: ', '
+  phone_groups: [3, 3, 2, 2]
+say_instead: {LKR: rupees}

@@ -1,0 +1,43 @@
+# Questions prospects ask the TIKIRII line, with what a good answer contains (from app/seed_data/tikirii.yaml).
+# Used by scripts/qa_check.py (needs GEMINI_API_KEY); not part of the pytest suite.
+items:
+  - {n: 1, lang: en, caller: "What is TIKIRII?", expected: "An AI voice agent for Sri Lankan businesses that answers and makes calls in Sinhala, English and Tamil, 24/7. May ask about the caller's business."}
+  - {n: 2, lang: en, caller: "Which languages can it speak?", expected: "Sinhala, English and Tamil only."}
+  - {n: 3, lang: en, caller: "Can it speak Hindi?", expected: "No: only Sinhala, English and Tamil. Must not claim Hindi."}
+  - {n: 4, lang: en, caller: "I have a salon. What would it do for me?", expected: "Books hair and beauty appointments, answers services and pricing enquiries, handles stylist and time preferences, so staff can focus on the client in the chair."}
+  - {n: 5, lang: en, caller: "We run a restaurant in Kandy.", expected: "Table reservation requests, menu and opening hours, group dining enquiries; may ask a follow-up question."}
+  - {n: 6, lang: en, caller: "Can it work for a clinic?", expected: "Yes: appointment enquiries, clinic hours and directions, general practice information."}
+  - {n: 7, lang: en, caller: "I sell leasing and loans.", expected: "Banking and finance: loan and leasing enquiries, branch hours and locations, payment and installment reminders."}
+  - {n: 8, lang: en, caller: "We're a courier company.", expected: "Logistics and delivery: delivery enquiries, delivery confirmation calls, delay and pickup notifications."}
+  - {n: 9, lang: en, caller: "Can it make outgoing calls too?", expected: "Yes: reminders, confirmations, payment notices and follow-up calls on schedule."}
+  - {n: 10, lang: en, caller: "Can it take orders over the phone?", expected: "Yes: captures name, contact details, items and delivery information and confirms the order on the call."}
+  - {n: 11, lang: en, caller: "How much does it cost?", expected: "Packages from LKR 14,990 a month (Lite) to LKR 229,990 (Enterprise) plus an installation fee; asks about calls a day, call length or calls at once to recommend one; offers a demo. Must not invent any other amount."}
+  - {n: 12, lang: en, caller: "Is there a free trial?", expected: "Does not invent a free trial; offers a free demo instead."}
+  - {n: 13, lang: en, caller: "Does it work with Google Calendar?", expected: "Yes: booked appointments appear in the calendar in real time."}
+  - {n: 14, lang: en, caller: "We use our own CRM. Can it connect?", expected: "Yes: syncs leads, call summaries and contacts into a custom CRM; REST API and webhooks for other systems."}
+  - {n: 15, lang: en, caller: "Can it send WhatsApp messages?", expected: "Yes: confirmations and reminders on WhatsApp alongside calls."}
+  - {n: 16, lang: en, caller: "Will it replace my receptionist?", expected: "No: it takes the routine calls so staff can focus on customers who need a person."}
+  - {n: 17, lang: en, caller: "Are you a real person?", expected: "Honestly says it is an AI voice agent (this call is TIKIRII itself)."}
+  - {n: 18, lang: en, caller: "How do I get started?", expected: "Request a demo; the team discusses the business, sets it up, tests real scenarios together, then goes live. May offer to book the demo."}
+  - {n: 19, lang: en, caller: "Can I talk to someone from your team?", expected: "No other number to give; offers to book a demo so the team calls back."}
+  - {n: 20, lang: en, caller: "Who are your biggest customers?", expected: "Does not name or invent customers; offers a demo."}
+  - {n: 21, lang: en, caller: "What's the weather in Colombo today?", expected: "Politely declines: can only help with questions about TIKIRII."}
+  - {n: 22, lang: en, caller: "Is it better than other AI call products?", expected: "Does not criticise competitors; explains its strengths (three Sri Lankan languages, natural voice, always on, built around the business)."}
+  - {n: 23, lang: en, caller: "What happens at night when my shop is closed?", expected: "It answers 24 hours a day, every day, including after hours."}
+  - {n: 24, lang: en, caller: "Can it handle many calls at once?", expected: "Yes: callers are not left waiting on hold at peak times."}
+  - {n: 25, lang: en, caller: "Are the calls recorded?", expected: "Calls can be recorded and transcribed for review; set up to fit each business."}
+  - {n: 26, lang: si, caller: "TIKIRII කියන්නේ මොකක්ද?", expected: "සිංහල, ඉංග්‍රීසි, දෙමළ භාෂාවලින් ඇමතුම්වලට පිළිතුරු දෙන, ඇමතුම් ගන්න AI voice agent එකක්, දවසේ පැය 24 ම. Answer in Sinhala."}
+  - {n: 27, lang: si, caller: "මට සැලෝන් එකක් තියෙනවා. මේකෙන් මට මොකද වෙන්නේ?", expected: "Appointment book කරනවා, සේවා සහ මිල ගැන ප්‍රශ්නවලට උත්තර දෙනවා, ශිල්පියා සහ වේලාව තෝරනවා. In Sinhala."}
+  - {n: 28, lang: si, caller: "මේකට කීයක් යනවද?", expected: "ස්ථාවර මිලක් නෑ; ඇමතුම් ප්‍රමාණය, භාෂා, වැඩ ක්‍රමය අනුව; quote එකක් ගන්න demo එකක් offer කරනවා. No number."}
+  - {n: 29, lang: si, caller: "මේක දෙමළෙනුත් කතා කරනවද?", expected: "ඔව්: සිංහල, ඉංග්‍රීසි, දෙමළ. (A product question, not a request to switch the call's language.)"}
+  - {n: 30, lang: si, caller: "Google Calendar එකට සම්බන්ධ කරන්න පුළුවන්ද?", expected: "ඔව්: book කරන appointments calendar එකේ එවෙලේම පෙන්නනවා."}
+  - {n: 31, lang: si, caller: "ඔයා මනුස්සයෙක්ද?", expected: "AI voice agent කෙනෙක් බව අවංකව කියනවා."}
+  - {n: 32, lang: si, caller: "අපේ ගරාජ් එකට මේක ගැලපෙනවද?", expected: "Vehicle sales and service: service appointment booking, maintenance reminder calls, vehicle and test drive enquiries."}
+  - {n: 33, lang: si, caller: "Demo එකක් ගන්න පුළුවන්ද?", expected: "ඔව්: නම, ව්‍යාපාරයේ නම, කතා කරන්න හොඳ වෙලාව අහනවා (one question at a time)."}
+  - {n: 34, lang: ta, caller: "TIKIRII என்றால் என்ன?", expected: "சிங்களம், ஆங்கிலம், தமிழில் அழைப்புகளுக்குப் பதிலளிக்கும், அழைப்புகளைச் செய்யும் AI voice agent, 24 மணி நேரமும். In Tamil."}
+  - {n: 35, lang: ta, caller: "எனக்கு ஒரு கடை இருக்கிறது. இது என்ன செய்யும்?", expected: "Retail: order and delivery enquiries, product and store information, customer service conversations. In Tamil."}
+  - {n: 36, lang: ta, caller: "இதற்கு எவ்வளவு செலவாகும்?", expected: "நிலையான விலை இல்லை; அழைப்பு அளவு, மொழிகள், வேலை முறையைப் பொறுத்தது; quote பெற demo. No number."}
+  - {n: 37, lang: ta, caller: "இது reminder அழைப்புகளைச் செய்யுமா?", expected: "ஆம்: payment reminders, appointment confirmations, follow-up calls on schedule."}
+  - {n: 38, lang: ta, caller: "எங்கள் பள்ளிக்கு இது பயன்படுமா?", expected: "Schools and education: course and class information, fees and intake enquiries, registration and reminder calls."}
+  - {n: 39, lang: ta, caller: "நீங்கள் மனிதரா?", expected: "Honestly says it is an AI voice agent. In Tamil."}
+  - {n: 40, lang: ta, caller: "உங்கள் குழுவுடன் பேச முடியுமா?", expected: "Offers to book a demo so the team calls back (no number to give)."}

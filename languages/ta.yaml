@@ -1,0 +1,67 @@
+# Tamil: everything the agent says in Tamil. A call speaks only this language: the caller picked it in the language menu.
+#
+# Every language file has exactly the same keys. The app checks them at startup and refuses to start, naming the
+# file and the key, if one is missing or misspelt. Placeholders in {braces} are filled in by the app.
+#
+# Have a native speaker review this file: the agent speaks the way it is told to here.
+
+code: ta
+name: Tamil
+native_name: தமிழ்
+transcription_codes: [ta-LK, en-US]
+whatsapp_language: ta
+greeting: >-
+  டிகிரி AI Agent-ஐ அழைத்ததற்கு நன்றி.
+  உங்கள் நிறுவனத்திற்கு வரும் Calls சில நேரங்களில் Miss ஆகிறதா? அதனால் Orders அல்லது புதிய Customers-ஐ இழக்கிறீர்களா?
+  விடுமுறை நாட்களிலும் Calls வருவதால், உங்களுக்கு ஓய்வே இல்லையா? அல்லது நிறுவனம் மூடியிருக்கும் நேரத்தில் வரும் Calls-க்கு பதிலளிக்க யாரும் இல்லையா?
+  இப்போது அதற்கு ஒரு எளிய தீர்வு இருக்கிறது.
+  Calls-க்கு பதிலளிக்க தனியாக ஒரு ஊழியரை நியமிக்க வேண்டியதில்லை.
+  டிகிரி AI Agent ஆகிய எங்களால், உங்கள் நிறுவனத்திற்கு வரும் Calls-க்கு பதிலளிக்க முடியும், ஒரே நேரத்தில் பல Calls வந்தாலும் Handle செய்ய முடியும்.
+  உங்கள் சேவைகள் அல்லது பொருட்கள் பற்றி வாடிக்கையாளர்களுக்குத் தேவையான விவரங்களை வழங்கவும், உங்களுக்காக Orders எடுக்கவும், Appointments மற்றும் Reservations Book செய்யவும் டிகிரி AI Agent ஆகிய எங்களால் முடியும்.
+  அதாவது, நீங்கள் Busy-ஆக இருந்தாலும், விடுமுறை நாளாக இருந்தாலும், நிறுவனம் மூடியிருந்தாலும், உங்கள் Customers-க்குத் தேவையான உதவியை வழங்க எங்களால் முடியும்.
+  இதைப் பற்றி மேலும் விவரங்கள் தெரிந்துகொள்ள விரும்புகிறீர்களா?
+recording_notice: தரத்திற்காக இந்த அழைப்பு பதிவு செய்யப்படுகிறது.
+style_rules: |
+  - Speak polite, natural spoken Sri Lankan Tamil, like a friendly product specialist. Not literary (written) Tamil, and not Indian (Chennai) colloquial Tamil.
+  - Address the caller respectfully as நீங்கள் / உங்களுக்கு / உங்கள். Never use நீ.
+  - Use Sri Lankan Tamil words where they differ from Indian Tamil, for example முறைப்பாடு (not புகார்) for a complaint, இலக்கம் (not எண்) for a number, ஓம் for yes.
+  - Keep sentences short and warm.
+  - Tamil mixed with English words is Tamil. Everyday English business words can stay in English: AI, call, booking, appointment, order, reminder, follow-up, demo, WhatsApp, Google Calendar, CRM, system, business, customer.
+  - Say times the spoken way, for example "பிற்பகல் இரண்டு மணிக்கு", and never read out web addresses letter by letter.
+  - Say phone numbers exactly as the tools write them. Never turn digits into words yourself.
+hearing_hints: |
+  - The product name TIKIRII is said "டிகிரி". Callers may say "டிகிரி", "திகிரி" or "டிக்கி": they mean TIKIRII.
+  - Callers name business types in English or Tamil: "salon", "restaurant", "கடை", "shop", "hotel", "clinic", "class", "institute" (education), "leasing" (banking and finance), "காணி" (real estate), "garage", "service centre" (vehicle service).
+  - ஓம், "சரி" and "ok" mean yes. இல்லை and "இப்போது வேண்டாம்" mean no.
+glossary: {AI voice agent: AI voice agent (தொலைபேசியில் பேசும் AI உதவியாளர்), incoming calls: வரும் அழைப்புகள், outgoing calls: வெளிச்செல்லும் அழைப்புகள், appointment: appointment (நேர ஒதுக்கீடு), order: order, reminder: reminder (நினைவூட்டல்), demo: demo, customer: வாடிக்கையாளர், business: வணிகம்}
+goodbye_phrases: [போய் வருகிறேன், பிறகு சந்திப்போம், நல்ல நாள், இனிய நாள்]
+join_word: மற்றும்
+common: {ask_phone: 'உங்கள் கைத்தொலைபேசி இலக்கத்தைச் சொல்ல முடியுமா?', read_back_phone: 'நீங்கள் சொன்ன இலக்கம் {phone}. சரியா?', phone_ten_digits: 'மன்னிக்கவும், தொலைபேசி இலக்கத்தில் பத்து இலக்கங்கள் இருக்க வேண்டும். பூஜ்ஜியத்தில் தொடங்கி முழு இலக்கத்தையும் மெதுவாகச் சொல்லுங்கள்.', ask_new_phone: நீங்கள் விரும்பும் தொலைபேசி இலக்கத்தைச் சொல்லுங்கள்., which_detail_wrong: 'மன்னிக்கவும். எந்த விவரம் தவறு?', please_repeat: 'மன்னிக்கவும், எனக்குத் தெளிவாகக் கேட்கவில்லை. மீண்டும் சொல்ல முடியுமா?', sorry_wrong: 'மன்னிக்கவும், நான் தவறாகச் சொன்னேன்.', anything_else: 'TIKIRII பற்றி வேறு ஏதாவது தெரிந்துகொள்ள விரும்புகிறீர்களா?', no_information: 'மன்னிக்கவும், அந்தத் தகவல் இப்போது என்னிடம் இல்லை. demo இல் எங்கள் குழு அதைப் பற்றிச் சொல்லும்.', out_of_scope: 'மன்னிக்கவும், {company} பற்றிய கேள்விகளுக்கு மட்டுமே என்னால் உதவ முடியும்.', other_language: 'மன்னிக்கவும், இந்த அழைப்பில் என்னால் தமிழில் மட்டுமே பேச முடியும். வேறு மொழி வேண்டுமென்றால், hash விசையை அழுத்தி பிரதான மெனுவுக்குச் சென்று மொழியைத் தேர்ந்தெடுங்கள்.', still_there: 'நீங்கள் இன்னும் இருக்கிறீர்களா?', no_response: 'பதில் கிடைக்காததால் அழைப்பை முடிக்கிறேன். அழைத்ததற்கு நன்றி. இனிய நாள்!', wrap_up: 'அழைப்பின் நேரம் முடிவடையப் போகிறது. வேறு ஏதாவது வேண்டுமென்றால் இப்போதே சொல்லுங்கள்.', goodbye: 'TIKIRII இற்கு அழைத்ததற்கு நன்றி. இனிய நாள்!'}
+send: {offer: 'TIKIRII பற்றிய சுருக்கமான விவரத்தை உங்கள் தொலைபேசிக்குச் செய்தியாக அனுப்பவா?', ask_mobile: 'அனுப்ப வேண்டிய கைத்தொலைபேசி இலக்கத்தைச் சொல்ல முடியுமா?', use_caller_id: 'நீங்கள் அழைக்கும் {phone} இலக்கத்திற்கே அனுப்பவா?', not_mobile: 'மன்னிக்கவும், அது கைத்தொலைபேசி இலக்கம் அல்ல. ஒரு கைத்தொலைபேசி இலக்கத்தைச் சொல்ல முடியுமா?', sent: 'சரி, விவரங்களை உங்கள் தொலைபேசிக்கு அனுப்பிவிட்டேன். சிறிது நேரத்தில் வந்துவிடும்.', not_set_up: 'மன்னிக்கவும், இப்போது செய்திகளை அனுப்ப முடியவில்லை. விவரங்களை நான் இப்போது சொல்கிறேன்.', nothing_to_send: 'மன்னிக்கவும், அதைப் பற்றி அனுப்பக்கூடிய விவரங்கள் என்னிடம் இல்லை.'}
+lead: {offer: 'TIKIRII உங்கள் வணிகத்திற்கு எப்படி வேலை செய்யும் என்று காட்ட, எங்கள் குழுவுடன் இலவச demo ஒன்றை book செய்யவா?', ask_name: 'உங்கள் பெயரைச் சொல்ல முடியுமா?', ask_business: 'உங்கள் வணிகத்தின் பெயர் என்ன?', ask_time: 'demo பற்றி எங்கள் குழு உங்களை அழைக்க எந்த நேரம் வசதியானது?', use_caller_id: 'நீங்கள் இப்போது அழைக்கும் {phone} இலக்கத்திலேயே எங்கள் குழு உங்களை அழைக்கலாமா?', booked: 'நன்றி. உங்கள் demo கோரிக்கையை book செய்துவிட்டேன். எங்கள் குழு விரைவில் உங்களை அழைத்து அதை ஏற்பாடு செய்யும்.', confirm_details: 'விவரங்களை ஒருமுறை சரிபார்க்கிறேன். உங்கள் பெயர் {name}, உங்கள் வணிகம் {business}, எங்கள் குழு உங்களை {time} {phone} இலக்கத்தில் அழைக்கும். சரியா?', booked_sms: 'நன்றி. உங்கள் demo கோரிக்கையை book செய்து, உறுதிப்படுத்தும் செய்தியை உங்கள் தொலைபேசிக்கு அனுப்பியுள்ளேன். எங்கள் குழு விரைவில் உங்களை அழைத்து அதை ஏற்பாடு செய்யும்.', updated: 'நன்றி. உங்கள் demo கோரிக்கையைப் புதுப்பித்துவிட்டேன். எங்கள் குழு விரைவில் உங்களை அழைத்து அதை ஏற்பாடு செய்யும்.', updated_sms: 'நன்றி. உங்கள் demo கோரிக்கையைப் புதுப்பித்து, திருத்திய விவரங்களை உங்கள் தொலைபேசிக்கு அனுப்பியுள்ளேன்.', already_booked: 'உங்கள் demo கோரிக்கை ஏற்கனவே book செய்யப்பட்டுள்ளது. எங்கள் குழு விரைவில் உங்களை அழைக்கும்.'}
+sms:
+  intro: '{company}: சிங்களம், ஆங்கிலம், தமிழ் மொழிகளில் அழைப்புகளுக்குப் பதிலளிக்கும் AI voice agent.'
+  overview_title: என்ன செய்யும்
+  capabilities_title: TIKIRII கையாளும் வேலைகள்
+  industry_title: '{industry} இற்கு'
+  contact_title: எங்களைத் தொடர்புகொள்ள
+  website_line: 'இணையத்தளம்: {url}'
+  email_line: 'மின்னஞ்சல்: {email}'
+  phone_line: 'தொலைபேசி: {phone}'
+  footer: இலவச demo ஒன்றை book செய்ய எப்போது வேண்டுமானாலும் எங்களை அழையுங்கள்.
+  demo_booked: '{company}: நன்றி {name}. உங்கள் இலவச demo கோரிக்கை book செய்யப்பட்டது.'
+  demo_updated: '{company}: {name}, உங்கள் demo கோரிக்கை புதுப்பிக்கப்பட்டது.'
+  demo_business: 'வணிகம்: {business}'
+  demo_time: 'நாங்கள் அழைக்கும் நேரம்: {time}'
+  demo_footer: 'எங்கள் குழு விரைவில் உங்களை அழைத்து demo ஐ ஏற்பாடு செய்யும்.'
+  weekdays: [திங்கள், செவ்வாய், புதன், வியாழன், வெள்ளி, சனி, ஞாயிறு]
+language:
+  names: {si: சிங்களம், ta: தமிழ், en: ஆங்கிலம்}
+spoken_numbers:
+  words: []
+  hundreds: []
+  hundreds_alone: []
+  joined: '{words}'
+  separator: ', '
+  phone_groups: [3, 3, 2, 2]
+say_instead: {புகார்: முறைப்பாடு, எண்: இலக்கம், LKR: ரூபாய்}

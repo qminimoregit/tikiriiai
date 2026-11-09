@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Company & agent · TIKIRII</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main>
+  <div class="page-head">
+    <div>
+      <h1>Company &amp; agent</h1>
+      <p class="subtitle">What TIKIRII is, how the agent sounds, and the language menu callers hear first. Changes apply from the next call.</p>
+    </div>
+    <button type="button" class="primary" id="save-top">Save</button>
+  </div>
+
+  <form id="profile-form" autocomplete="off">
+    <div class="card">
+      <h2>The company</h2>
+      <div class="grid grid-3" style="margin-top:14px">
+        <div class="field"><label for="company_name">Product name</label><input type="text" id="company_name" name="company_name" maxlength="200" /></div>
+        <div class="field" style="grid-column:span 2"><label for="tagline">One-line summary</label><input type="text" id="tagline" name="tagline" maxlength="300" /></div>
+      </div>
+      <div class="field"><label for="overview">What it is</label><textarea id="overview" name="overview" rows="5"></textarea><p class="hint">Written in English for the model; it explains it in the caller's language.</p></div>
+      <div class="grid grid-2">
+        <div class="field"><label for="pricing_note">How pricing works</label><textarea id="pricing_note" name="pricing_note" rows="12"></textarea><p class="hint">The agent gives only the prices written here. Write amounts as LKR 14,990 and list each package, its minutes, its concurrent calls and any add-ons.</p></div>
+        <div class="field"><label for="getting_started">Getting started</label><textarea id="getting_started" name="getting_started" rows="4"></textarea></div>
+      </div>
+      <div class="grid grid-2">
+        <div class="field"><label for="website">Website</label><input type="text" id="website" name="website" maxlength="300" placeholder="https://" /></div>
+        <div class="field"><label for="website_say_as">How the agent says it</label><input type="text" id="website_say_as" name="website_say_as" maxlength="300" placeholder="tikirii dot l k" /></div>
+        <div class="field"><label for="contact_email">Email</label><input type="text" id="contact_email" name="contact_email" maxlength="200" /></div>
+        <div class="field"><label for="email_say_as">How the agent says it</label><input type="text" id="email_say_as" name="email_say_as" maxlength="300" /></div>
+      </div>
+      <div class="grid grid-3">
+        <div class="field"><label for="sales_phone">Sales phone number</label><input type="text" id="sales_phone" name="sales_phone" maxlength="60" /><p class="hint">Blank: the agent gives no number and offers to book a demo instead.</p></div>
+        <div class="field"><label for="timezone">Timezone</label><input type="text" id="timezone" name="timezone" /></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>The agent</h2>
+      <div class="grid grid-3" style="margin-top:14px">
+        <div class="field"><label for="agent_name">Agent's name</label><input type="text" id="agent_name" name="agent_name" maxlength="100" /></div>
+        <div class="field"><label for="agent_voice">Voice</label><select id="agent_voice" name="agent_voice"></select></div>
+        <div class="field"><label for="temperature">Temperature</label><input type="number" id="temperature" name="temperature" min="0" max="2" step="0.1" /><p class="hint">Keep 1.0 here. Live calls are capped at LIVE_MAX_TEMPERATURE (.env, 1.0 by default); much lower values can make the model loop or go quiet.</p></div>
+      </div>
+      <div class="field"><label>Languages callers can choose</label>
+        <div class="checks" id="languages"></div></div>
+      <div class="field"><label for="default_language">Main language</label><select id="default_language" name="default_language" style="max-width:240px"></select><p class="hint">Used when a caller presses no key in the menu.</p></div>
+      <div class="field"><label>Greeting <span class="hint">(blank = the built-in greeting; {company} and {agent} are filled in)</span></label><div id="greetings"></div></div>
+    </div>
+
+    <div class="card">
+      <h2>Language menu</h2>
+      <p class="hint" style="margin:6px 0 14px">Record one clip, for example "For Sinhala press 1, for Tamil press 2, for English press 3. If the call is recorded, say so in it: the agent never says it." It plays at the start of every call. The key picks the language, and the agent then speaks only that language.</p>
+      <div class="field"><label>Keys</label><div class="grid grid-3" id="keys"></div></div>
+      <div class="field">
+        <label>Menu recording</label>
+        <div id="menu-audio"></div>
+      </div>
+      <div class="field">
+        <label>"Sorry, unavailable" recording <span class="hint">(played if the AI cannot start; one per language)</span></label>
+        <div id="unavailable"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Sending a summary</h2>
+      <div class="field" style="margin-top:14px"><label for="message_channel">When a caller asks for a summary by message, send it by</label>
+        <select id="message_channel" name="message_channel" style="max-width:320px">
+          <option value="sms">SMS</option><option value="whatsapp_first">WhatsApp, then SMS if WhatsApp fails</option>
+          <option value="both">Both WhatsApp and SMS</option><option value="whatsapp">WhatsApp only</option>
+          <option value="off">Nothing (the agent only tells them)</option>
+        </select></div>
+      <div class="warn-box" id="messaging-problem" hidden></div>
+    </div>
+
+    <div class="card">
+      <h2>Extra knowledge and instructions</h2>
+      <div class="field" style="margin-top:14px"><label for="extra_info">More information the agent can use</label><textarea id="extra_info" name="extra_info" rows="4"></textarea></div>
+      <div class="field"><label for="agent_instructions">Special instructions for the agent</label><textarea id="agent_instructions" name="agent_instructions" rows="8"></textarea><p class="hint">Written in English for the model, for example what to ask first, what it must never say.</p></div>
+    </div>
+
+    <div class="actions"><button type="submit" class="primary big">Save</button></div>
+  </form>
+
+  <div class="card">
+    <div class="page-head"><h2>What the agent knows</h2>
+      <div class="actions"><select id="preview-lang" style="width:auto"></select><button type="button" id="preview-btn">Show</button></div></div>
+    <p class="hint" id="preview-info" style="margin:6px 0 0"></p>
+    <pre id="preview" class="prompt-preview" hidden></pre>
+  </div>
+</main>
+<script src="js/api.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
